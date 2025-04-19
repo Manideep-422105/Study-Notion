@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "https://study-notion-lps9.onrender.com";
 
 // AUTH ENDPOINTS
 export const endpoints = {
