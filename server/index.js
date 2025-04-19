@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // CORS configuration
-const whitelist = process.env.CORS_ORIGIN || "http://localhost:3000";
+const whitelist = process.env.CORS_ORIGIN || "https://study-notion-five-pearl.vercel.app";
 
 app.use(
   cors({
