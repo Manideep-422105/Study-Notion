@@ -16,7 +16,7 @@ const AdminPannel = () => {
             return;
         }
         console.log(category);
-        const res = await createCategory({
+        await createCategory({
             name: category.name,
             description: category.description
         }, token);

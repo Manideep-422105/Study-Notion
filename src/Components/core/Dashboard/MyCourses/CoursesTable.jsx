@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table"
 
-import { setCourse, setEditCourse } from "../../../../slices/courseSlice"
+// import { setCourse, setEditCourse } from "../../../../slices/courseSlice"
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import { useState } from "react"
 import { FaCheck } from "react-icons/fa"
@@ -19,7 +19,7 @@ import { COURSE_STATUS } from "../../../../utils/constants"
 import ConfirmationModal from "../../../common/ConfirmationModal"
 
 export default function CoursesTable({ courses, setCourses }) {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.auth)
   const [loading, setLoading] = useState(false)
@@ -39,11 +39,11 @@ export default function CoursesTable({ courses, setCourses }) {
 
   // console.log("All Course ", courses)
 
-  if(loading) {
+  if (loading) {
     return (
-        <div className="custom-loader"></div>
+      <div className="custom-loader"></div>
     )
-    }
+  }
 
 
   return (
@@ -79,7 +79,7 @@ export default function CoursesTable({ courses, setCourses }) {
                 key={course?._id}
                 className="flex gap-x-10 border-b border-richblack-800 px-6 py-8 gap-4"
               >
-                <Td colSpan={1}  className="flex flex-1 gap-x-4 p-3">
+                <Td colSpan={1} className="flex flex-1 gap-x-4 p-3">
                   <img
                     src={course?.thumbnail}
                     alt={course?.courseName}
@@ -91,11 +91,11 @@ export default function CoursesTable({ courses, setCourses }) {
                     </p>
                     <p className="text-xs text-richblack-300">
                       {course?.courseDescription.split(" ")?.length >
-                      TRUNCATE_LENGTH
+                        TRUNCATE_LENGTH
                         ? course.courseDescription
-                            .split(" ")
-                            .slice(0, TRUNCATE_LENGTH)
-                            .join(" ") + "..."
+                          .split(" ")
+                          .slice(0, TRUNCATE_LENGTH)
+                          .join(" ") + "..."
                         : course.courseDescription}
                     </p>
                     <p className="text-[12px] text-white">
@@ -144,10 +144,10 @@ export default function CoursesTable({ courses, setCourses }) {
                         btn2Text: "Cancel",
                         btn1Handler: !loading
                           ? () => handleCourseDelete(course._id)
-                          : () => {},
+                          : () => { },
                         btn2Handler: !loading
                           ? () => setConfirmationModal(null)
-                          : () => {},
+                          : () => { },
                       })
                     }}
                     title="Delete"

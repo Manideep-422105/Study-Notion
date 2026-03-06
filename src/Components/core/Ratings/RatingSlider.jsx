@@ -5,7 +5,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Mousewheel, Keyboard } from "swiper";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+// import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useState } from "react";
 import { ratingsEndpoints } from "../../../services/apis";
@@ -14,7 +14,7 @@ import RatingStars from "../../common/RatingStars";
 
 const RatingSlider = () => {
   const [Reviews, setReviews] = useState([]);
-  const [Loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     const getReviews = async () => {

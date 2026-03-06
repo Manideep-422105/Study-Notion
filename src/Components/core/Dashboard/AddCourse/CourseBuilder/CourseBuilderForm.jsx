@@ -19,7 +19,7 @@ import {
 const CourseBuilderForm = () => {
   const { token } = useSelector((state) => state.auth);
   const [editSectionName, setEditSectionName] = React.useState(false);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { course } = useSelector((state) => state.course);
 
@@ -41,12 +41,11 @@ const CourseBuilderForm = () => {
     register,
     handleSubmit,
     setValue,
-    getValues,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
-    let result=null;
+    let result = null;
     setLoading(true);
     if (editSectionName) {
       result = await updateSection(
@@ -76,8 +75,8 @@ const CourseBuilderForm = () => {
   };
 
 
-  const handelChangeEditSectionName = (sectionId,sectionName) => {
-    if (editSectionName===sectionId) {
+  const handelChangeEditSectionName = (sectionId, sectionName) => {
+    if (editSectionName === sectionId) {
       setEditSectionName(false);
       setValue("sectionName", "");
       return;

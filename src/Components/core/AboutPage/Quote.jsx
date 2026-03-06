@@ -1,5 +1,5 @@
 import React from 'react'
-import HighlightText from '../HomePage/HighlightText'
+// import HighlightText from '../HomePage/HighlightText'
 
 const Quote = () => {
   return (
@@ -10,9 +10,9 @@ const Quote = () => {
         {" "}
         expertise
       </span>
-      , and community to create an 
-      <span  className='bg-gradient-to-b from-[#FF512F] to-[#F09819] text-transparent bg-clip-text font-bold'>
-      {" "}
+      , and community to create an
+      <span className='bg-gradient-to-b from-[#FF512F] to-[#F09819] text-transparent bg-clip-text font-bold'>
+        {" "}
         unparalleled educational experience.
       </span>
     </div>
