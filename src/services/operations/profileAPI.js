@@ -61,7 +61,7 @@ export async function updatePfp(token, pfp, dispatch) {
 
 
 //updateAdditionalDetails
-export async function updateAdditionalDetails(token, additionalDetails, dispatch) {
+export async function updateAdditionalDetails(token, additionalDetails, dispatch, navigate) {
   const { firstName, lastName, dateOfBirth, gender, contactNumber, about } = additionalDetails;
   const toastId = toast.loading("Updating...");
   try {
@@ -72,15 +72,24 @@ export async function updateAdditionalDetails(token, additionalDetails, dispatch
       throw new Error(response.data.message)
     }
     toast.success("Additional Details Updated Successfully");
+
+    const updatedUserDetails = response.data.userDetails;
+    const updatedProfile = response.data.profile;
+
+    // Merge the backend response directly instead of guessing the changes
     const user = JSON.parse(localStorage.getItem("user"));
-    user.firstName = firstName || user.firstName;
-    user.lastName = lastName || user.lastName;
-    user.additionalDetails.dateOfBirth = dateOfBirth || user.additionalDetails.dateOfBirth;
-    user.additionalDetails.contactNumber = contactNumber || user.additionalDetails.contactNumber;
-    user.additionalDetails.about = about || user.additionalDetails.about;
-    user.additionalDetails.gender = gender
-    localStorage.setItem("user", JSON.stringify(user));
-    dispatch(setUser(user));
+    const newUser = {
+      ...user,
+      firstName: updatedUserDetails.firstName,
+      lastName: updatedUserDetails.lastName,
+      additionalDetails: updatedProfile
+    };
+
+    localStorage.setItem("user", JSON.stringify(newUser));
+    dispatch(setUser(newUser));
+
+    // Redirect user to see the fresh profile like real websites do
+    if (navigate) navigate("/dashboard/my-profile");
 
   } catch (error) {
     toast.error(error.response?.data?.message || "Failed to update details")

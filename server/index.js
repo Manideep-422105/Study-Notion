@@ -42,11 +42,13 @@ app.use(
   })
 );
 
+const os = require("os");
+
 // File upload configuration
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: "/tmp",
+    tempFileDir: os.tmpdir(),
   })
 );
 

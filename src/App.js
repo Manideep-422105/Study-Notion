@@ -5,6 +5,7 @@ import NavBar from "./Components/common/NavBar";
 import Footer from "./Components/common/Footer";
 import LoadingBar from "react-top-loading-bar";
 import { setProgress } from "./slices/loadingBarSlice";
+import "video-react/dist/video-react.css";
 import { useSelector, useDispatch } from "react-redux";
 import OpenRoute from "./Components/core/Auth/OpenRoute";
 import PrivateRoute from "./Components/core/Auth/PrivateRoute";

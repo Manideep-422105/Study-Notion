@@ -5,7 +5,7 @@ exports.createSection = async (req, res) => {
 	try {
 		// Extract the required properties from the request body
 		const { sectionName, courseId } = req.body;
-		console.log(first)
+
 		// Validate the input
 		if (!sectionName || !courseId) {
 			return res.status(400).json({
@@ -13,14 +13,14 @@ exports.createSection = async (req, res) => {
 				message: "Missing required properties",
 			});
 		}
-		
-		const ifcourse= await Course.findById(courseId);
+
+		const ifcourse = await Course.findById(courseId);
 		if (!ifcourse) {
 			return res.status(404).json({
-                success: false,
-                message: "Course not found",
-            });
-        }
+				success: false,
+				message: "Course not found",
+			});
+		}
 
 		// Create a new section with the given name
 		const newSection = await Section.create({ sectionName });
@@ -62,7 +62,7 @@ exports.createSection = async (req, res) => {
 // UPDATE a section
 exports.updateSection = async (req, res) => {
 	try {
-		const { sectionName, sectionId,courseId } = req.body;
+		const { sectionName, sectionId, courseId } = req.body;
 		console.log(sectionName, sectionId);
 		const section = await Section.findByIdAndUpdate(
 			sectionId,
@@ -88,7 +88,7 @@ exports.updateSection = async (req, res) => {
 // DELETE a section
 exports.deleteSection = async (req, res) => {
 	try {
-		const { sectionId,courseId } = req.body;
+		const { sectionId, courseId } = req.body;
 		await Section.findByIdAndDelete(sectionId);
 		const updatedCourse = await Course.findById(courseId).populate({ path: "courseContent", populate: { path: "subSection" } }).exec();
 		res.status(200).json({

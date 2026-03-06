@@ -39,12 +39,12 @@ const Settings = () => {
 
   //update additional info
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    gender: "",
-    contactNumber: "",
-    about: "",
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    dateOfBirth: user?.additionalDetails?.dateOfBirth || "",
+    gender: user?.additionalDetails?.gender || "",
+    contactNumber: user?.additionalDetails?.contactNumber || "",
+    about: user?.additionalDetails?.about || "",
   })
 
   const handleOnChange = (e) => {
@@ -56,7 +56,7 @@ const Settings = () => {
 
   const handelAdditionalDetails = (e) => {
     e.preventDefault()
-    updateAdditionalDetails(token, formData, dispatch);
+    updateAdditionalDetails(token, formData, dispatch, navigate);
   }
 
 
@@ -137,21 +137,22 @@ const Settings = () => {
               <div className="flex flex-col gap-5 lg:flex-row">
                 <div className="flex flex-col gap-2 lg:w-[48%]">
                   <label htmlFor="firstName" className=" text-richblack-50">First Name</label>
-                  <input defaultValue={user.firstName || null} type="text" name="firstName" id="firstName" placeholder="Enter first name" className="form-style" onChange={handleOnChange} />
+                  <input value={formData.firstName} type="text" name="firstName" id="firstName" placeholder="Enter first name" className="form-style" onChange={handleOnChange} />
                 </div>
                 <div className="flex flex-col gap-2 lg:w-[48%]">
                   <label htmlFor="lastName" className="text-richblack-50">Last Name</label>
-                  <input defaultValue={user.lastName || null} type="text" name="lastName" id="lastName" placeholder="Enter first name" className="form-style" onChange={handleOnChange} />
+                  <input value={formData.lastName} type="text" name="lastName" id="lastName" placeholder="Enter last name" className="form-style" onChange={handleOnChange} />
                 </div>
               </div>
               <div className="flex flex-col gap-5 lg:flex-row">
                 <div className="flex flex-col gap-2 lg:w-[48%]">
                   <label htmlFor="dateOfBirth" className="text-richblack-50">Date of Birth</label>
-                  <input defaultValue={user?.additionalDetails.dateOfBirth || null} type="date" name="dateOfBirth" id="dateOfBirth" className="form-style" onChange={handleOnChange} />
+                  <input value={formData.dateOfBirth} type="date" name="dateOfBirth" id="dateOfBirth" className="form-style" onChange={handleOnChange} />
                 </div>
                 <div className="flex flex-col gap-2 lg:w-[48%]">
                   <label htmlFor="gender" className="text-richblack-50">Gender</label>
-                  <select defaultValue={user?.additionalDetails.gender || null} type="text" name="gender" id="gender" className="form-style" onChange={handleOnChange}>
+                  <select value={formData.gender} type="text" name="gender" id="gender" className="form-style" onChange={handleOnChange}>
+                    <option value="" disabled>Select Gender</option>
                     <option value="Prefer not to say">Prefer not to say</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -163,11 +164,11 @@ const Settings = () => {
               <div className="flex flex-col gap-5 lg:flex-row">
                 <div className="flex flex-col gap-2 lg:w-[48%]">
                   <label htmlFor="contactNumber" className="text-richblack-50">Contact Number</label>
-                  <input defaultValue={user?.additionalDetails.contactNumber || null} type="tel" name="contactNumber" id="contactNumber" placeholder="Enter Contact Number" className="form-style" onChange={handleOnChange} />
+                  <input value={formData.contactNumber} type="tel" name="contactNumber" id="contactNumber" placeholder="Enter Contact Number" className="form-style" onChange={handleOnChange} />
                 </div>
                 <div className="flex flex-col gap-2 lg:w-[48%]">
                   <label htmlFor="about" className="text-richblack-50">About</label>
-                  <input defaultValue={user?.additionalDetails.about || null} type="text" name="about" id="about" placeholder="Enter Bio Details" className="form-style" onChange={handleOnChange} />
+                  <input value={formData.about} type="text" name="about" id="about" placeholder="Enter Bio Details" className="form-style" onChange={handleOnChange} />
                 </div>
               </div>
             </div>

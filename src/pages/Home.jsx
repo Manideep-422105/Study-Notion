@@ -42,7 +42,7 @@ function Home() {
     useEffect(() => {
         const fetchCatalogPageData = async () => {
 
-            const result = await getCatalogaPageData(categoryID, dispatch);
+            const result = await getCatalogaPageData(categoryID, dispatch, false);
             setCatalogPageData(result);
             // console.log("page data",CatalogPageData);
 
