@@ -20,6 +20,8 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 			trim: true,
+			unique: true,
+			index: true,
 		},
 
 		// Define the password field with type String and required
