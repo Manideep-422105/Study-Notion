@@ -27,7 +27,7 @@ exports.capturePayment = async (req, res) => {
 
     for(const course_id of courses){
         let course;
-        // console.log("courseid=",course_id);
+        console.log("courseid=",course_id);
         try{
             course = await Course.findById(course_id);
             if(!course) {

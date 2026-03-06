@@ -40,7 +40,7 @@ export async function buyCourse (token, courses, userDetails, navigate, dispatch
         return;
         }
     const orderResponse = await apiConnector("POST", COURSE_PAYMENT_API, {courses},{
-        Authorisation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
     })
     if(!orderResponse.data.success){
         toast.error(orderResponse.data.message)
@@ -50,7 +50,7 @@ export async function buyCourse (token, courses, userDetails, navigate, dispatch
     }
     console.log("buyCourse -> orderResponse", orderResponse)
     const options = {
-        key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+        key: "rzp_test_3dQ5J8oE8ivhxH",
         currency: orderResponse.data.currency,
         amount: orderResponse.data.amount.toString(),
         order_id: orderResponse.data.orderId,
@@ -98,7 +98,7 @@ async function sendPaymentSuccessEmail (response,amount,token) {
         paymentId:response.razorpay_payment_id,
         orderId:response.razorpay_order_id,
     }, {
-        Authorisation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
     });
     if (!res.success) {
         console.log(res.message);
@@ -122,7 +122,7 @@ async function verifypament (response,courses,token,navigate,dispatch,) {
             razorpay_signature: response.razorpay_signature,
             courses:courses.courses || courses,
         }, {
-            Authorisation: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
         });
         console.log("verifypament -> res", res)
         if (!res.data.success) {
