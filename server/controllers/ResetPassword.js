@@ -25,7 +25,7 @@ exports.resetPasswordToken = async (req, res) => {
 		);
 		console.log("DETAILS", updatedDetails);
 
-		const url = `${process.env.CORS_ORIGIN || "http://localhost:3000"}/update-password/${token}`;
+		const url = `${process.env.FRONTEND_URL || "https://study-notion-five-pearl.vercel.app"}/update-password/${token}`;
 
 		await mailSender(
 			email,

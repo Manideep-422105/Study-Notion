@@ -34,10 +34,10 @@ app.use(cookieParser());
 
 // CORS configuration
 const allowedOrigins = [
-  "https://study-notion-five-pearl.vercel.app",
+  process.env.FRONTEND_URL || "https://study-notion-five-pearl.vercel.app",
   "http://localhost:3000",
   "http://localhost:5173",
-];
+].filter(Boolean);
 
 app.use(
   cors({
