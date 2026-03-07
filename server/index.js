@@ -33,11 +33,22 @@ app.use(express.json());
 app.use(cookieParser());
 
 // CORS configuration
-// const whitelist = process.env.CORS_ORIGIN || "https://study-notion-five-pearl.vercel.app";
+const allowedOrigins = [
+  "https://study-notion-five-pearl.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5173",
+];
 
 app.use(
   cors({
-    origin: "*",
+    origin: function (origin, callback) {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
