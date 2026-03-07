@@ -156,6 +156,8 @@ exports.login = async (req, res) => {
 			const options = {
 				expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
 				httpOnly: true,
+				secure: true,       // Required for cross-domain cookies (forces HTTPS)
+				sameSite: "none"    // Tells the browser it's safe to send from Render to Vercel
 			};
 			res.cookie("token", token, options).status(200).json({
 				success: true,
