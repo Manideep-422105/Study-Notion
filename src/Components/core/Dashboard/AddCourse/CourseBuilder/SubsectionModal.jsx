@@ -89,9 +89,7 @@ const SubsectionModal = ({
         formData.append("videoFile", data.lectureVideo);
         formData.append("courseId", course._id);
 
-        console.log("formdata", [...formData]);
         const result = await createSubSection(formData, token);
-        console.log("result", result);
         if (result) {
 
             dispatch(setCourse(result));

@@ -33,13 +33,12 @@ const ReviewModal = ({ setReviewModal }) => {
 
 
   const onSubmit = async (data) => {
-    const res = await createRating({
+    await createRating({
       courseId: courseId,
       review: data.userExperience,
       rating: data.userRating
     }, token);
     setReviewModal(false);
-    console.log(res);
   }
 
 

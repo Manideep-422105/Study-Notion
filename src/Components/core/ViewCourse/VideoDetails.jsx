@@ -109,7 +109,6 @@ const VideoDetails = () => {
       subSectionId: subsectionId,
     }, token);
     dispatch(setCompletedLectures([...completedLectures, videoData._id]));
-    console.log("lecture completed", completedLectures);
   }
 
   //set video end to false when .play() is called
